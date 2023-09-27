@@ -54,6 +54,8 @@ ja:
         full_name: フルネーム
         handle: ユーザー名
         password: パスワード
+      api_key:
+        oidc_api_key_role:
     errors:
       messages:
         unpwn: 過去にデータ侵害を受けたためお使いになれません
@@ -719,3 +721,9 @@ ja:
       new_device: 新しいセキュリティ機器を登録
       nickname: ニックネーム
       submit: 機器を登録
+  oidc:
+    api_key_roles:
+      index:
+        api_key_roles:
+      show:
+        api_key_role_name:

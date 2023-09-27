@@ -55,6 +55,8 @@ zh-CN:
         full_name: 全名
         handle: 用户名
         password: 密码
+      api_key:
+        oidc_api_key_role:
     errors:
       messages:
         unpwn: 曾出现过数据泄露，不应该再使用
@@ -727,3 +729,9 @@ zh-CN:
       new_device: 创建一个新的安全设备
       nickname: 昵称
       submit: 注册设备
+  oidc:
+    api_key_roles:
+      index:
+        api_key_roles:
+      show:
+        api_key_role_name:
