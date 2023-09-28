@@ -61,7 +61,8 @@ rubygem_requestable.ownership_requests.create_with(
 
 Version.create_with(
   indexed: true,
-  pusher: author
+  pusher: author,
+  metadata: { "source_code_uri" => "https://github.com/example/#{rubygem1.name}" }
 ).find_or_create_by!(rubygem: rubygem0, number: "1.0.0", platform: "ruby", gem_platform: "ruby")
 Version.create_with(
   indexed: true
@@ -161,14 +162,15 @@ Admin::GitHubUser.create_with(
 github_oidc_provider = OIDC::Provider
   .create_with(
     configuration: {
-      issuer: "https://token.actions.githubusercontent.com",
-      jwks_uri: "https://token.actions.githubusercontent.com/.well-known/jwks",
+      issuer: OIDC::Provider::GITHUB_ACTIONS_ISSUER,
+      jwks_uri: "#{OIDC::Provider::GITHUB_ACTIONS_ISSUER}/.well-known/jwks",
       response_types_supported: ["id_token"],
-      subject_types_supported: ["public"],
+      subject_types_supported: ["public", "pairwise"],
       id_token_signing_alg_values_supported: ["RS256"],
-      claims_supported: ["repo"]
+      claims_supported: %w[sub aud repository],
+      scopes_supported: ["openid"]
     }
-  ).find_or_create_by!(issuer: "https://token.actions.githubusercontent.com")
+  ).find_or_create_by!(issuer: OIDC::Provider::GITHUB_ACTIONS_ISSUER)
 
 author_oidc_api_key_role = author.oidc_api_key_roles.create_with(
   api_key_permissions: {
@@ -202,7 +204,7 @@ author_oidc_api_key_role.user.api_keys.create_with(
   name: "push-rubygem-1-expired",
 ).tap do |api_key|
   OIDC::IdToken.find_or_create_by!(
-    api_key:, 
+    api_key:,
     jwt: { claims: {jti: "expired"}, header: {}},
     api_key_role: author_oidc_api_key_role
   )
@@ -218,7 +220,7 @@ author_oidc_api_key_role.user.api_keys.create_with(
   name: "push-rubygem-1-unexpired",
 ).tap do |api_key|
   OIDC::IdToken.find_or_create_by!(
-    api_key:, 
+    api_key:,
     jwt: { claims: {jti: "unexpired"}, header: {}},
     api_key_role: author_oidc_api_key_role
   )

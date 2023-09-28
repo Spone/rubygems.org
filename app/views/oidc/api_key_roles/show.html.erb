@@ -1,28 +1,23 @@
 <% @title = t(".api_key_role_name", name: @api_key_role.name) %>
-
 <div class="t-body">
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:token) %></h3>
   <div class="push--s">
     <code><%= @api_key_role.token %></code>
   </div>
-
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:provider) %></h3>
   <div class="push--s">
-    <%= link_to @api_key_role.provider.issuer, @api_key_role.provider.issuer %>
+    <%= link_to @api_key_role.provider.issuer, profile_oidc_provider_path(@api_key_role.provider) %>
   </div>
-
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:api_key_permissions) %></h3>
   <div class="push--s">
-  <code><pre><%= JSON.pretty_generate @api_key_role.api_key_permissions.as_json %></pre></code>
+    <%= render @api_key_role.api_key_permissions %>
   </div>
-
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:access_policy) %></h3>
   <div class="push--s">
-    <code><pre><%= JSON.pretty_generate @api_key_role.access_policy.as_json %></pre></code>
+    <%= render @api_key_role.access_policy %>
   </div>
-
+  <%= button_to t(".edit"), edit_profile_oidc_api_key_role_path(@api_key_role.token), method: "get", class: "form__submit" %>
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:id_tokens) %></h3>
-
   <div class="push--s">
     <table class="owners__table">
       <thead>

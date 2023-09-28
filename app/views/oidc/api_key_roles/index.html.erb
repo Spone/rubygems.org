@@ -1,6 +1,6 @@
 <% @title = t(".api_key_roles") %>
-
 <div class="t-body">
+  <p><%= button_to t(".new_role"), new_profile_oidc_api_key_role_path, method: "get", class: "form__submit" %></p>
   <table class="owners__table">
     <thead>
       <tr class="owners__row owners__header">

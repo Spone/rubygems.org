@@ -61,6 +61,8 @@ en:
         password: Password
       api_key:
         oidc_api_key_role: OIDC API Key Role
+      oidc/id_token:
+        jti: JWT ID
     errors:
       messages:
         unpwn: has previously appeared in a data breach and should not be used
@@ -81,6 +83,8 @@ en:
           attributes:
             valid_for:
               inclusion: "%{value} seconds must be between 5 minutes (300 seconds) and 1 day (86,400 seconds)"
+            gems:
+              too_long: "may include at most 1 gem"
   api_keys:
     create:
       success: "Created new API key"
@@ -558,6 +562,10 @@ en:
         wiki: Wiki
         resend_ownership_confirmation: Resend confirmation
         ownership: Ownership
+        oidc:
+          api_key_role:
+            name: "OIDC: %{name}"
+            new: "OIDC: Create"
     reserved:
       reserved_namespace: This namespace is reserved by rubygems.org.
     dependencies:
@@ -717,3 +725,25 @@ en:
         api_key_roles: OIDC API Key Roles
       show:
         api_key_role_name: "API Key Role %{name}"
+      git_hub_actions_workflow:
+        title: "OIDC Gem Push GitHub Actions Workflow"
+      new:
+        title: "New OIDC API Key Role"
+    providers:
+      index:
+        title: "OIDC Providers"
+      show:
+        title: "OIDC Provider"
+  duration:
+    minutes:
+      other: "%{count} minutes"
+      one: "1 minute"
+    hours:
+      other: "%{count} hours"
+      one: "1 hour"
+    days:
+      other: "%{count} days"
+      one: "1 day"
+    seconds:
+      other: "%{count} seconds"
+      one: "1 second"

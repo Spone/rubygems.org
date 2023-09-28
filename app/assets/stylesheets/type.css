@@ -175,6 +175,8 @@ a.t-list__item {
     overflow-x: scroll;
     line-height: 1.33;
     word-break: normal; }
+    .t-body pre code.multiline {
+      word-spacing: inherit; }
 .t-body code {
   font-weight: bold;
   font-family: "courier", monospace;

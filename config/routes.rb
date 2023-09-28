@@ -174,7 +174,12 @@ Rails.application.routes.draw do
       end
 
       namespace :oidc do
-        resources :api_key_roles, param: :token, only: %i[index show]
+        resources :api_key_roles, param: :token do
+          member do
+            get 'github_actions_workflow'
+          end
+        end
+        resources :providers, only: %i[index show]
       end
     end
     resources :stats, only: :index
