@@ -35,8 +35,8 @@
             <td class="owners__cell"><%= id_token.created_at %></td>
             <td class="owners__cell"><%= id_token.api_key.expires_at %></td>
             <td class="owners__cell"><code><%= id_token.jti %></code></td>
-            <td class="owners__cell"><code><%= id_token.claims.to_json %></code></td>
-            <td class="owners__cell"><code><%= id_token.header.to_json %></code></td>
+            <td class="owners__cell"><%= render OIDC::IdToken::KeyValuePairsComponent.new(pairs: id_token.claims) %></td>
+            <td class="owners__cell"><%= render OIDC::IdToken::KeyValuePairsComponent.new(pairs: id_token.header) %></td>
           </tr>
         <% end %>
       </tbody>

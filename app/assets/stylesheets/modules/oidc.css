@@ -23,6 +23,15 @@ dl.provider_attributes {
   row-gap: 1rem;
 }
 
+dl.full-width {
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+dl.provider_attributes dt.text-left {
+  text-align: left;
+}
+
 dl.provider_attributes dd ul.tag-list {
   display: flex;
   flex-direction: row;
