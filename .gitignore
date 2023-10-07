@@ -24,3 +24,6 @@ latest_dump
 coverage
 REVISION
 /.env*
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
