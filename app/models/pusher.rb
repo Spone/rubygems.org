@@ -157,6 +157,7 @@ class Pusher
     StoreVersionContentsJob.perform_later(version:) if ld_variation(key: "gemcutter.pusher.store_version_contents", default: false)
     RackAttackReset.gem_push_backoff(@remote_ip, @user.display_id) if @remote_ip.present?
     StatsD.increment "push.success"
+    Rstuf::AddJob.perform_later(version:)
   end
 
   def ld_variation(key:, default:)
