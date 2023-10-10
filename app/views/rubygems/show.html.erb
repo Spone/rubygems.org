@@ -1,6 +1,5 @@
 <% @title = @rubygem.name %>
 <% @subtitle = @latest_version&.slug %>
-
 <% content_for :head do %>
   <%= auto_discovery_link_tag(:atom, rubygem_versions_path(@rubygem.slug, format: "atom"), {title: "#{@rubygem.name} Version Feed"}) %>
   <% if @rubygem.versions.any? && @latest_version.indexed %>
@@ -16,8 +15,9 @@
     <meta name="robots" content="noindex" />
   <% end %>
 <% end %>
-
-
+<% content_for :javascript do %>
+  <%= javascript_import_module_tag "github-buttons" %>
+<% end %>
 <div class="l-overflow">
   <div class="l-colspan--l colspan--l--has-border">
     <% if @latest_version.indexed %>
@@ -26,7 +26,6 @@
           <%= simple_markup(@latest_version.info) %>
         </div>
       </div>
-
       <div class="gem__install">
         <h2 class="gem__ruby-version__heading t-list__heading">
           <%= t '.bundler_header' %>:
@@ -50,7 +49,6 @@
         <p><%=t '.yanked_notice' %></p>
       </div>
     <% end %>
-
     <% if @versions.present? %>
       <div class="l-half--l">
         <div class="versions">
@@ -64,7 +62,6 @@
         </div>
       </div>
     <% end %>
-
     <div class = "l-half--l">
       <%= render :partial => "rubygems/dependencies", :locals => { :dependencies => @latest_version.dependencies.runtime } %>
       <%= render :partial => "rubygems/dependencies", :locals => { :dependencies => @latest_version.dependencies.development } %>
@@ -74,7 +71,6 @@
         </div>
       <% end %>
     </div>
-
     <% if @latest_version.requirements.present? %>
       <div class="l-half--l">
         <h3 class="t-list__heading"><%= t '.requirements_header' %>:</h3>
@@ -85,10 +81,8 @@
         </div>
       </div>
     <% end %>
-
     <%= render partial: "rubygems/gem_members", locals: { latest_version: @latest_version, rubygem: @rubygem } %>
     <%= render partial: "rubygems/version_navigation", locals: { rubygem: @rubygem, latest_version: @latest_version } %>
   </div>
-
   <%= render "rubygems/aside" %>
 </div>
