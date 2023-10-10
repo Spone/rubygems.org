@@ -1,5 +1,23 @@
 SemanticLogger.application = "rubygems.org"
 
+module SemanticLoggerFix
+  def silenced?(event)
+    case logger
+    when nil
+      true
+    when SemanticLogger::Logger
+      logger.send(:level_index) - 1 > @event_levels.fetch(event, Float::INFINITY)
+    when ActiveSupport::BroadcastLogger
+      level = logger.broadcasts.map { |b| b.send(:level_index) }.min - 1
+      level > @event_levels.fetch(event, Float::INFINITY)
+    else
+      super
+    end
+  end
+end
+
+ActiveSupport::LogSubscriber.prepend(SemanticLoggerFix)
+
 ActiveSupport.on_load(:action_controller) do
   def append_info_to_payload(payload)
     payload.merge!(

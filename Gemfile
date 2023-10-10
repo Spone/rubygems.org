@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 gem "rails-i18n", "~> 7.0"
 
 gem "aws-sdk-s3", "~> 1.119"
@@ -32,7 +32,7 @@ gem "rack", "~> 2.2"
 gem "rack-utf8_sanitizer", "~> 1.8"
 gem "rbtrace", "~> 0.4.8"
 gem "rdoc", "~> 6.5"
-gem "roadie-rails", "~> 3.0"
+gem "roadie-rails", "~> 3.0", git: "https://github.com/Mange/roadie-rails.git", ref: "a13712c32f68aacf425c8dbe552abc5ddd74b4e5"
 gem "ruby-magic", "~> 0.6"
 gem "shoryuken", "~> 4.0", require: false
 gem "statsd-instrument", "~> 3.5"
@@ -63,7 +63,7 @@ gem "groupdate", "~> 6.2"
 
 # Logging
 gem "amazing_print", "~> 1.4"
-gem "rails_semantic_logger", "~> 4.11"
+gem "rails_semantic_logger", "~> 4.11", git: "https://github.com/reidmorrison/rails_semantic_logger", ref: "2473acbf10a5e3a2d53c940715b9e2215f4ec179"
 
 group :assets do
   gem "dartsass-sprockets", "~> 3.0"
@@ -108,6 +108,5 @@ group :test do
   gem "simplecov-cobertura", "~> 2.1", require: false
   gem "aggregate_assertions", "~> 0.2.0"
   gem "minitest-gcstats", "~> 1.3"
-  gem "minitest-profile", "~> 0.0.2"
   gem "minitest-reporters", "~> 1.6"
 end
