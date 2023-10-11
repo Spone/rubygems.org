@@ -36,7 +36,8 @@ dl.provider_attributes dd ul.tag-list {
   display: flex;
   flex-direction: row;
   list-style: none;
-  justify-content: space-between;
+  justify-content: start;
+  column-gap: 1rem;
   flex-wrap: wrap;
   align-items: baseline;
   margin: 0;

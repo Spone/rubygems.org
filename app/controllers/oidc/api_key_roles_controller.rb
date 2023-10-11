@@ -84,15 +84,15 @@ class OIDC::ApiKeyRolesController < ApplicationController
   end
 
   def add_default_params(rubygem, statement, condition)
+    condition.claim = "aud"
+    condition.operator = "string_equals"
+    condition.value = Gemcutter::HOST
+
     return unless rubygem
     return unless (gh = helpers.link_to_github(rubygem)).presence
     return unless (@api_key_role.provider = OIDC::Provider.github_actions)
 
     statement.principal = { oidc: @api_key_role.provider.issuer }
-
-    condition.claim = "aud"
-    condition.operator = "string_equals"
-    condition.value = Gemcutter::HOST
 
     repo_condition = OIDC::AccessPolicy::Statement::Condition.new(
       claim: "repository",

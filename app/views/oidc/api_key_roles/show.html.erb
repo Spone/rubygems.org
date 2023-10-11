@@ -17,6 +17,9 @@
     <%= render @api_key_role.access_policy %>
   </div>
   <%= button_to t(".edit"), edit_profile_oidc_api_key_role_path(@api_key_role.token), method: "get", class: "form__submit" %>
+  <% if @api_key_role.provider.github_actions? %>
+    <h2 class="t-display"><%= link_to t(".automate_gh_actions_publishing"), github_actions_workflow_profile_oidc_api_key_role_path(@api_key_role.token), class: "t-link" %></h2>
+  <% end %>
   <h3 class="t-list__heading"><%= OIDC::ApiKeyRole.human_attribute_name(:id_tokens) %></h3>
   <div class="push--s">
     <table class="owners__table">

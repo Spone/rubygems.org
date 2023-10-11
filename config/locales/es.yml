@@ -63,6 +63,8 @@ es:
         password: Contraseña
       api_key:
         oidc_api_key_role:
+      oidc/id_token:
+        jti:
     errors:
       messages:
         unpwn:
@@ -83,6 +85,8 @@ es:
           attributes:
             valid_for:
               inclusion:
+            gems:
+              too_long:
   api_keys:
     create:
       success:
@@ -589,6 +593,10 @@ es:
         wiki: Wiki
         resend_ownership_confirmation:
         ownership:
+        oidc:
+          api_key_role:
+            name:
+            new:
     reserved:
       reserved_namespace: Este namespace está reservado por rubygems.org.
     dependencies:
@@ -762,3 +770,26 @@ es:
         api_key_roles:
       show:
         api_key_role_name:
+        automate_gh_actions_publishing:
+      git_hub_actions_workflow:
+        title:
+      new:
+        title:
+    providers:
+      index:
+        title:
+      show:
+        title:
+  duration:
+    minutes:
+      other:
+      one:
+    hours:
+      other:
+      one:
+    days:
+      other:
+      one:
+    seconds:
+      other:
+      one:

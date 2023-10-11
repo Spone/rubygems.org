@@ -56,6 +56,8 @@ ja:
         password: パスワード
       api_key:
         oidc_api_key_role:
+      oidc/id_token:
+        jti:
     errors:
       messages:
         unpwn: 過去にデータ侵害を受けたためお使いになれません
@@ -76,6 +78,8 @@ ja:
           attributes:
             valid_for:
               inclusion: "%{value}秒は5分（300秒）から1日（86,400秒）までの間でなければなりません"
+            gems:
+              too_long:
   api_keys:
     create:
       success: 新しいAPIキーを作成しました
@@ -562,6 +566,10 @@ ja:
         wiki: Wiki
         resend_ownership_confirmation: 確認を再送
         ownership: 所有者
+        oidc:
+          api_key_role:
+            name:
+            new:
     reserved:
       reserved_namespace: この名前空間はrubygems.orgにより予約されています。
     dependencies:
@@ -727,3 +735,26 @@ ja:
         api_key_roles:
       show:
         api_key_role_name:
+        automate_gh_actions_publishing:
+      git_hub_actions_workflow:
+        title:
+      new:
+        title:
+    providers:
+      index:
+        title:
+      show:
+        title:
+  duration:
+    minutes:
+      other:
+      one:
+    hours:
+      other:
+      one:
+    days:
+      other:
+      one:
+    seconds:
+      other:
+      one:

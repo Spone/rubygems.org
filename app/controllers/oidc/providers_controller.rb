@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class OIDC::ProvidersController < ApplicationController
+  before_action :redirect_to_signin, unless: :signed_in?
   before_action :find_provider, only: :show
 
   def index

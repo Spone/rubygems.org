@@ -725,6 +725,7 @@ en:
         api_key_roles: OIDC API Key Roles
       show:
         api_key_role_name: "API Key Role %{name}"
+        automate_gh_actions_publishing: "Automate Gem Publishing with GitHub Actions"
       git_hub_actions_workflow:
         title: "OIDC Gem Push GitHub Actions Workflow"
       new:

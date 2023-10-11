@@ -52,6 +52,8 @@ zh-TW:
         password: 密碼
       api_key:
         oidc_api_key_role:
+      oidc/id_token:
+        jti:
     errors:
       messages:
         unpwn:
@@ -72,6 +74,8 @@ zh-TW:
           attributes:
             valid_for:
               inclusion:
+            gems:
+              too_long:
   api_keys:
     create:
       success:
@@ -546,6 +550,10 @@ zh-TW:
         wiki: Wiki
         resend_ownership_confirmation:
         ownership:
+        oidc:
+          api_key_role:
+            name:
+            new:
     reserved:
       reserved_namespace:
     dependencies:
@@ -705,3 +713,26 @@ zh-TW:
         api_key_roles:
       show:
         api_key_role_name:
+        automate_gh_actions_publishing:
+      git_hub_actions_workflow:
+        title:
+      new:
+        title:
+    providers:
+      index:
+        title:
+      show:
+        title:
+  duration:
+    minutes:
+      other:
+      one:
+    hours:
+      other:
+      one:
+    days:
+      other:
+      one:
+    seconds:
+      other:
+      one:

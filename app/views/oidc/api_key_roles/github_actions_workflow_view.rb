@@ -56,7 +56,8 @@ class OIDC::ApiKeyRoles::GitHubActionsWorkflowView < ApplicationView
           "id-token": "write"
         },
         steps: [
-          { uses: "rubygems/configure-rubygems-credentials@main", with: { "role-to-assume": api_key_role.token } },
+          { uses: "rubygems/configure-rubygems-credentials@main",
+            with: { "role-to-assume": api_key_role.token, audience: configured_audience }.compact },
           { uses: "actions/checkout@v4" },
           { name: "Set remote URL", run: set_remote_url_run },
           { name: "Set up Ruby", uses: "ruby/setup-ruby@v1", with: { "bundler-cache": true, "ruby-version": "ruby" } },
@@ -90,5 +91,21 @@ class OIDC::ApiKeyRoles::GitHubActionsWorkflowView < ApplicationView
 
   def not_github
     "This OIDC API Key Role is not configured for GitHub Actions."
+  end
+
+  def configured_audience
+    auds = api_key_role.access_policy.statements.flat_map do |s|
+      next unless s.effect == "allow"
+
+      s.conditions.flat_map do |c|
+        c.value if c.claim == "aud"
+      end
+    end
+    auds.compact!
+    auds.uniq!
+
+    return unless auds.size == 1
+    aud = auds.first
+    aud if aud != "rubygems.org" # default in action
   end
 end
